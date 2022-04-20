@@ -1,4 +1,4 @@
-step "Package Custom Template" {
+step "Package Custom Templates" {
     properties = {
         Octopus.Action.TargetRoles = "client"
     }
