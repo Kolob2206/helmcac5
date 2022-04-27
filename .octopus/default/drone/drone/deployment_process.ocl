@@ -52,3 +52,19 @@ step "Package Parameter Step" {
         }
     }
 }
+
+step "Script Ref" {
+    properties = {
+        Octopus.Action.TargetRoles = "client"
+    }
+
+    action {
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Template.Id = "ActionTemplates-1163"
+            Octopus.Action.Template.Version = "0"
+            Package = "{\"PackageId\":\"api-package\",\"FeedId\":\"Octopus Server (built-in)\"}"
+        }
+        worker_pool_variable = ""
+    }
+}
