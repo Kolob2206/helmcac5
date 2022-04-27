@@ -25,3 +25,30 @@ step "Package Custom Template" {
         }
     }
 }
+
+step "Package Parameter Step" {
+    properties = {
+        Octopus.Action.TargetRoles = "client"
+    }
+
+    action {
+        properties = {
+            Octopus.Action.Package.FeedId = "Octopus Server (built-in)"
+            Octopus.Action.Package.PackageId = "api-package"
+            Octopus.Action.Template.Id = "ActionTemplates-1162"
+            Octopus.Action.Template.Version = "0"
+            Package = "{\"PackageId\":\"api-package\",\"FeedId\":\"Octopus Server (built-in)\"}"
+        }
+        worker_pool_variable = ""
+
+        packages {
+            acquisition_location = "Server"
+            feed = "Octopus Server (built-in)"
+            package_id = "api-package"
+            properties = {
+                PackageParameterName = "Package"
+                SelectionMode = "deferred"
+            }
+        }
+    }
+}
